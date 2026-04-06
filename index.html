@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEATHER FORECAST APPLICATION DEVELOPMENT IN JAVASCRIPT</title>
+<link rel="stylesheet" href="src/input.css">
+</head>
+<body>
+    
+<div class="app">
+
+  <!-- HEADER SECTION ----->
+
+  <!-- SEARCH SECTION-->
+  <div class="search-wrapper">
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Search for any city...">
+
+      <!-- SEARCH BUTTON -->
+      <button id="searchBtn">Search</button>
+
+      <!-- CURRENT LOCATION BUTTON -->
+        <button id="locationBtn">📍</button>
+
+      <!-- TOGGLE TEMPERATURE -->
+    <div class="toggle">
+      <button id="celsius" class="active">°C</button>
+      <button id="fahrenheit">°F</button>
+    </div>
+    
+    <!-- DROPDOWN SUGGESTIONS -->
+    </div>
+    <div id="dropdown" class="dropdown"></div>
+  </div>
+
+  <!-- ERROR MESSAGE-->
+  <p id="error" class="error"></p>
+
+  <div class="content">
+
+
+    <!-- BODY SECTION --->
+
+    <!-- LEFT  PANEL -->
+    <div class="left">
+      <div class="top">
+        <!-- CITY + DATE -->
+        <div>
+          <h2 id="city">City</h2>
+        </div>
+        <div id="date">Day, Date</div>
+      </div>
+     <!-- TEMPERATURE SECTION -->
+      <div class="temp-section">
+        <h1 id="temp">--°C</h1>
+        <p id="desc">Condition</p>
+      </div>
+      
+      <!-- WEATHER ICON -->
+      <div id="icon" class="icon">☀️</div>
+
+      <!-- WEATHER DETAILS CARD -->
+   <div class="grid">
+        <div class="card">💨 Wind<br><b id="wind"></b></div>
+        <div class="card">💧 Humidity<br><b id="humidity"></b></div>
+        <div class="card">📊 Pressure<br><b id="pressure"></b></div>
+        <div class="card">👁 Visibility<br><b id="visibility"></b></div>
+        <div class="card">🌡 Feels Like<br><b id="feelsLike"></b></div>
+    </div>
+   <div class="sun-row">
+  <div class="card">🌅 Sunrise<br><b id="sunrise"></b></div>
+  <div class="card">🌇 Sunset<br><b id="sunset"></b></div>
+</div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right">
+
+      <!-- FORECAST TITLE-->
+      <div class="forecast-header">
+      <h2>5 Day Forecast</h2>
+      </div>
+      <div id="forecastList"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
