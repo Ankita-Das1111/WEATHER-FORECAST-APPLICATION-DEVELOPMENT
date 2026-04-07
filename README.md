@@ -1,43 +1,103 @@
-# 🌦️ Weather Forecast Application
+🌦️ Weather Forecast Application
 
-A simple **Weather App** built with **HTML**, **JavaScript**, and **Tailwind CSS**.  
-Check the current weather for any city, view a 5-day forecast, and switch between Celsius & Fahrenheit.
-
----
-
-## ✨ Features
-
-- 🌍 Check current weather for any city  
-- 📅 5-day weather forecast  
-- 🌡️ Celsius & Fahrenheit toggle  
-- 📱 Responsive design for mobile & desktop  
+A fully functional Weather Forecast Web App built using HTML, JavaScript, and Tailwind CSS.
+This application allows users to check real-time weather conditions, view a 5-day forecast, and interact with a dynamic and responsive UI.
 
 ---
 
-## 📁 Project Files
+✨ Features
 
-- `index.html` → Main HTML structure  
-- `script.js` → JavaScript functionality  
-- `src/input.css` → Custom CSS (Tailwind source)  
-- `src/output.css` → Generated Tailwind CSS  
-- `package.json` → Project dependencies  
-- `package-lock.json` → Lock file for npm  
-- `.gitignore` → Files and folders to ignore  
-
----
-
-## 🚀 How to Run
-
-1. Clone or download the repository.  
-2. Open `index.html` in your browser.  
-3. Enjoy checking the weather!  
+- 🌍 Search weather by city name
+- 📍 Get weather using current location (Geolocation API)
+- 📅 5-day weather forecast
+- 🌡️ Toggle between Celsius (°C) and Fahrenheit (°F)
+- 🕘 Recently searched cities dropdown (using LocalStorage)
+- 🌄 Dynamic background based on weather conditions (day/night support)
+- ⚠️ Extreme temperature alert system
+- 🎨 Glassmorphism UI with hover effects
+- 📱 Fully responsive (Desktop, Tablet, Mobile)
 
 ---
 
+🛠️ Tech Stack
 
-## 📌 Notes
-
-- Make sure `src/output.css` is generated via Tailwind CLI or PostCSS.  
-- `.gitignore` is set to ignore unnecessary files like `node_modules`.  
+- HTML5
+- CSS3 + Tailwind CSS
+- JavaScript (Vanilla JS)
+- OpenWeatherMap API
 
 ---
+
+🔑 API Setup
+
+This project uses the OpenWeatherMap API.
+
+1. Go to https://openweathermap.org/api
+2. Create a free account
+3. Generate your API key
+4. Replace the API key in "script.js":
+
+const apiKey = "24197bb9ae8cc4cfdde3ee3cf3e39d75";
+
+---
+
+📁 Project Structure
+
+Weather/
+│
+├── src/
+│   ├── input.css
+│   └── output.css
+│
+├── index.html
+├── script.js
+├── package.json
+├── package-lock.json
+├── README.md
+└── .gitignore
+
+---
+
+🚀 How to Run
+
+1. Clone the repository:
+
+git clone <your-repo-link>
+
+2. Install dependencies:
+
+npm install
+
+3. Generate Tailwind CSS:
+
+npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+
+4. Open "index.html" in your browser.
+
+---
+
+## 🌐 Live Demo
+[Click here to view the app](https://ankita-das1111.github.io/WEATHER-FORECAST-APPLICATION-DEVELOPMENT/)
+
+⚠️ Notes
+
+- Do not upload "node_modules" (already ignored using ".gitignore")
+- Ensure Tailwind CSS is compiled before running the app
+- Works best with a stable internet connection for API calls
+
+---
+
+📌 Future Improvements
+
+- 🌐 Add hourly forecast
+- 📊 Add charts for weather trends
+- 🔔 Notification system for weather alerts
+
+---
+
+👩‍💻 Author
+
+Developed as part of a training project.
+
+---
+
