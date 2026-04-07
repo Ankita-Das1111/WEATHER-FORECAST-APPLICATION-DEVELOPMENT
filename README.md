@@ -37,7 +37,7 @@ This project uses the OpenWeatherMap API.
 3. Generate your API key
 4. Replace the API key in "script.js":
 
-const apiKey = "24197bb9ae8cc4cfdde3ee3cf3e39d75";
+const apiKey = "YOUR_API_KEY";
 
 ---
 
@@ -58,13 +58,14 @@ Weather/
 
 ---
 
-🚀 How to Run
+## 🚀 How to Run
 
 1. Clone the repository:
+Clone the repository:
 
-git clone <your-repo-link>
+[GitHub Repository](https://github.com/Ankita-Das1111/WEATHER-FORECAST-APPLICATION-DEVELOPMENT)
 
-2. Install dependencies:
+3. Install dependencies:
 
 npm install
 
@@ -96,6 +97,8 @@ npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
 ---
 
 👩‍💻 Author
+
+Ankita-Das
 
 Developed as part of a training project.
 
