@@ -156,10 +156,11 @@ function displayWeather(data) {
   document.getElementById("temp").innerText =
     Math.round(convertTemp(data.main.temp)) + "°" + (isCelsius ? "C" : "F");
 
-    if (data.main.temp > 40) {
-  alert("⚠️ Extreme Heat Alert!");
+    if (isCelsius && data.main.temp > 40) {
+  error.innerText = "⚠️ Extreme Heat Alert (>40°C)";
+} else {
+  error.innerText = "";
 }
-
   document.getElementById("desc").innerText =
     data.weather[0].description;
 
