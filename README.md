@@ -5,6 +5,8 @@ This application allows users to check real-time weather conditions, view a 5-da
 
 ---
 
+[GitHub Repository](https://github.com/Ankita-Das1111/WEATHER-FORECAST-APPLICATION-DEVELOPMENT)
+
 ✨ Features
 
 - 🌍 Search weather by city name
@@ -61,11 +63,11 @@ Weather/
 ## 🚀 How to Run
 
 1. Clone the repository:
-Clone the repository:
+
 
 [GitHub Repository](https://github.com/Ankita-Das1111/WEATHER-FORECAST-APPLICATION-DEVELOPMENT)
 
-3. Install dependencies:
+2. Install dependencies:
 
 npm install
 
@@ -99,6 +101,7 @@ npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
 👩‍💻 Author
 
 Ankita-Das
+
 
 Developed as part of a training project.
 
