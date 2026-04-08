@@ -75,7 +75,7 @@ function convertTemp(temp) {
 // FETCH WEATHER BY CITY
 async function getWeather() {
   const error = document.getElementById("error");
-  const city = cityInput.value.trim().toLowerCase();
+  const city = cityInput.value.trim();
 
   if (!city) {
     error.innerText = "Please enter a city";
@@ -149,6 +149,7 @@ async function getLocationWeather() {
 
 function displayWeather(data) {
   const dateObj = new Date();
+  const error=document.getElementById("error");
 
   document.getElementById("city").innerText =
     `${data.name}, ${data.sys.country}`;
@@ -158,9 +159,9 @@ function displayWeather(data) {
 
     if (isCelsius && data.main.temp > 40) {
   error.innerText = "⚠️ Extreme Heat Alert (>40°C)";
-} else {
+  } else {
   error.innerText = "";
-}
+  }
   document.getElementById("desc").innerText =
     data.weather[0].description;
 
@@ -278,46 +279,70 @@ function getWeatherIcon(weather) {
 
 // FETCH 5-DAY FORECAST
 async function getForecast(city) {
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
-  );
-
-  const data = await res.json();
+  const error = document.getElementById("error");
   const forecastDiv = document.getElementById("forecastList");
 
-  forecastDiv.innerHTML = "";
+  try {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
+    );
 
-  for (let i = 0; i < 5; i++) {
-    const item = data.list[i * 8];
+    // ✅ Handle API failure
+    if (!res.ok) throw new Error("API Error");
 
-    const date = new Date(item.dt_txt);
+    const data = await res.json();
 
-    const day =
-      i === 0
-        ? "Today"
-        : date.toLocaleDateString("en-US", { weekday: "short" });
+    // ✅ Check data exists
+    if (!data.list || data.list.length === 0) {
+      throw new Error("No data");
+    }
 
-    const weather = item.weather[0].main;
-    const description = item.weather[0].description;
-    const icon = getWeatherIcon(weather);
+    forecastDiv.innerHTML = "";
 
-    const temp = Math.round(convertTemp(item.main.temp));
+    for (let i = 0; i < 5; i++) {
+      const item = data.list[i * 8];
 
-    const div = document.createElement("div");
-    div.classList.add("forecast-card");
+      // ✅ Prevent crash if item missing
+      if (!item) continue;
 
-    div.innerHTML = `
-      <div style="display:flex; align-items:center; gap:10px;">
-        <span style="font-size:20px;">${icon}</span>
-        <div>
-          <p>${day}</p>
-          <small>${description}</small>
+      const date = new Date(item.dt_txt);
+
+      const day =
+        i === 0
+          ? "Today"
+          : date.toLocaleDateString("en-US", { weekday: "short" });
+
+      const weather = item.weather[0].main;
+      const description = item.weather[0].description;
+      const icon = getWeatherIcon(weather);
+
+      const temp = Math.round(convertTemp(item.main.temp));
+
+      const div = document.createElement("div");
+      div.classList.add("forecast-card");
+
+      div.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:20px;">${icon}</span>
+          <div>
+            <p>${day}</p>
+            <small>${description}</small>
+          </div>
         </div>
-      </div>
-      <span>${temp}°${isCelsius ? "C" : "F"}</span>
-    `;
+        <span>${temp}°${isCelsius ? "C" : "F"}</span>
+      `;
 
-    forecastDiv.appendChild(div);
+      forecastDiv.appendChild(div);
+    }
+
+  } catch (err) {
+    console.error(err);
+
+    // ✅ Clear old data
+    forecastDiv.innerHTML = "";
+
+    // ✅ Show user-friendly message
+    error.innerText = "⚠️ Unable to fetch forecast data";
   }
 }
 
